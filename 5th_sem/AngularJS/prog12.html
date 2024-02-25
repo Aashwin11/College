@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Date Application</title>
+
+    <script src="angularjsimportant.js">
+    </script>
+</head>
+
+<body ng-app="myApp12">
+    <center>
+        <h1>Date in different formats</h1>
+        <div ng-controller="myCntrl">
+            Current Date and Time: {{currentDate}}<br />
+            Short Date: {{currentDate|date: 'short'}}<br />
+            Long Date: {{currentDate |date: 'fullDate'}}<br />
+            Medium Date:{{currentDate|date: 'medium'}}
+
+        </div>
+    </center>
+</body>
+
+</html>
+<script>
+    var app = angular.module("myApp12", []);
+    app.controller("myCntrl", function ($scope) {
+        $scope.currentDate = new Date();
+    });
+</script>

@@ -1,0 +1,32 @@
+<html>
+<title>Experiment-1</title>
+</title>
+
+<head>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js">
+
+    </script>
+    <script>
+        var app = angular.module("myApp2", []);
+        app.controller("myCntrl", function ($scope) {
+            $scope.firstname = "Aniket"
+            $scope.lastname = "Ritam"
+        }
+        );
+    </script>
+</head>
+
+<body ng-app="myApp2">
+    <center>
+        <div ng-app="myApp" ng-controller="myCntrl">
+            <h2 style="color: aqua;"> Display the full name using Angular JS</h2>
+            <br>
+            Enter First name:<input style="font-size:25px;" type="text" ng-model="firstname"><br>
+            Enter First name:<input style="font-size:15px;" type="text" ng-model="lastname"><br>
+            Full name is :{{firstname+" "+lastname}}
+        </div>
+
+    </center>
+</body>
+
+</html>

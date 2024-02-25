@@ -1,0 +1,34 @@
+<html>
+    <title>Experiment-1</title>
+    </title>
+    <head>
+        <script typr="text/javascript"
+        src="angularjs.js">
+    
+        </script>
+        <script>
+            var app=angular.module("myApp",[]);
+            app.controller("myCntrl",function($scope){
+                $scope.firstname="Aniket"
+                $scope.lastname="Ritam"
+                $scope.fullname="Aniket Ritam"
+            $scope.makefullname=function()
+            {
+                $scope.fullname=$scope.firstname+" "+$scope.lastname
+            }
+        }
+            );
+        </script>
+        </head>
+        <body>
+            <center>
+            <div ng-app="myApp" ng-controller="myCntrl">
+            <h2 style="color: aqua;"> Display the full name using Angular JS</h2>
+            <br>
+            Enter First name:<input style="font-size:25px;" type="text" ng-model="firstname" ng-change="makefullname()"><br/>
+            Enter Last name:<input style="font-size:35px;"type="text" ng-model="lastname" ng-change="makefullname()"><br/>
+            Full name is :{{ fullname }}
+            </div>
+        
+        </center></body>
+    </html>

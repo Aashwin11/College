@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="angularjsimportant.js"></script>
+    <title>Document</title>
+</head>
+
+<body ng-app="myApp9">
+    <div ng-controller="myCntrl">
+        <h2>EMployee and Salary</h2>
+        Enter name: <input type="text" placeholder="name" ng-model="search_name">
+        Enter salary: <input type="text" placeholder="salary" ng-model="search_salary">
+        <input type="button" value="Clear filter" ng-click="clear_filter()">
+        <table border="1">
+            <tr>
+                <th>Slno</th>
+                <th>Name</th>
+                <th>Salary</th>
+            </tr>
+            <tr ng-repeat="emp in employees | filter:{name:search_name,salary:search_salary}">
+                <td>{{$index+1}}</td>
+                <td>{{emp.name}}</td>
+                <td>{{emp.salary}}</td>
+            </tr>
+        </table>
+
+    </div>
+
+</body>
+
+</html>
+<script>
+    var app = angular.module("myApp9", []);
+    app.controller("myCntrl", function ($scope) {
+        $scope.employees = [
+            { "name": "Akask", "salary": 18000 },
+            { "name": "Tine", "salary": 180 },
+            { "name": "Wine", "salary": 1800 },
+            { "name": "Akash Chopra", "salary": 19000 }];
+        $scope.clear_filter = function () {
+            $scope.search_name = "";
+            $scope.search_salary = "";
+        }
+
+    });
+</script>s

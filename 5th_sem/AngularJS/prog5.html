@@ -1,0 +1,59 @@
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <title>Student and their details</title>
+</head>
+
+<body ng-app="studDetails">
+    <h1>Display student details and their CGPA</h1><br>
+    <div ng-controller="StudentDetail">
+        <input type="text" placeholder="Enter number of #(student)" ng-model="num">
+        <br>
+        <input type="button" value="Create" ng-click="creates()">
+        <table ng-show="studentData.length > 0">
+            <tr>
+                <th>USN</th>
+                <th>Name</th>
+                <th>CGPA</th>
+            </tr>
+            <tr ng-repeat="st in studentData">
+                <td align="center">{{st.Slno}}</td>
+                <td>{{st.Name}}</td>
+                <td align="center">{{st.CGPA}}</td>
+            </tr>
+
+        </table><br>
+        Total #(student) = {{studentData.length}}
+    </div>
+
+</body>
+
+</html>
+<script>
+    var stuDet = angular.module("studDetails", []);
+    stuDet.controller("StudentDetail", function ($scope) {
+        $scope.creates = function () {
+            $scope.studentData = [];
+
+            for (var i = 1; i <= $scope.num; i++) {
+                var student = {
+                    "Slno": i,
+                    "Name": "Student-" + i,
+                    "CGPA": (Math.random() * 10).toFixed(2)
+
+                }
+                $scope.studentData.push(student);
+            }
+        }
+
+
+
+
+
+
+
+
+    });
+
+</script>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXPERIMENT-2</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js">
+
+    </script>
+</head>
+<body ng-app="myApp2">
+            <center>
+                <h3>TO DISPLAY LIST OF SHOPPING ITEMS</h3>
+                
+            </center>
+            <div ng-controller="Shopping">
+
+            <ul>
+                    <li ng-repeat="thing in shoppingItems">{{thing}}</li>
+                </ul>
+                Enter the item: <input type="text" id="item_name" ng-model="itemname" > 
+                <!-- to identify text box we use ng model -->
+                <input type="button" value="ADD" ng-click="addItem()">
+                <br>
+                <br>
+
+                Select the item to be remove: <select id="sel_items" ng-model="selected_item" ng-options="eatery for eatery in shoppingItems">
+            </select>
+                <input type="button" value="REMOVE" ng-click="removeItem()">
+
+            </div>
+
+
+</body>
+</html>
+<script>
+    let hhg=angular.module("myApp2",[]);
+    hhg.controller("Shopping",function($scope){
+        $scope.shoppingItems=["Apple","Mango",];
+        $scope.addItem=function(){
+          if($scope.itemname && $scope.shoppingItems.indexOf($scope.itemname)==-1)
+          {
+            $scope.shoppingItems.push($scope.itemname);
+            $scope.itemname="";
+          }
+            else
+            {
+                if($scope.itemname)
+                alert("This is already added in the shopping list");
+            else
+                 alert("Please enter the item to add");
+
+            }
+        }
+
+
+        $scope.removeItem=function()
+        {
+            if($scope.itemname && $scope.shoppingItems.indexOf($scope.itemname)==-1)
+            {
+                alert("Please Enter Item");
+            }
+            else{
+                let index=$scope.shoppingItems.indexOf($scope.selected_item);
+                $scope.shoppingItems.splice(index,1); 
+                // to remove items from the array we use splice
+                $scope.selected_item="";
+            }
+        }
+
+    });
+
+
+ 
+</script>
